@@ -74,15 +74,19 @@ section {
 }
 
 h2 {
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #DCC48E;
     padding-bottom: 10px;
     margin-bottom: 30px;
 }
 
-.about-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 40px;
+h3{
+    color: #DCC48E;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Space between bio text and education card */
 }
 
 /* 4. Game Development (Fixes image_3c3220.jpg) */
@@ -148,10 +152,17 @@ footer {
 }
 
 .education {
-    background: #1a1a1a; /* Matches your project-card background */
+    background: #1a1a1a;
     padding: 25px;
     border-radius: 12px;
-    border: 1px solid #222; /* Subtle border for definition */
+    border: 1px solid #222;
+    max-width: 600px; /* Makes the card a nice compact size */
+}
+
+.edu-logo {
+    width: 120px; /* Keeping the larger size to fight that internal padding */
+    height: auto;
+    margin-bottom: 5px; /* Pull the text a bit closer */
 }
 
 .edu-item {
@@ -159,13 +170,6 @@ footer {
     flex-direction: column;
     align-items: flex-start;
     gap: 15px; /* Space between logo and text */
-}
-
-.edu-logo {
-    width: 80px; /* Increased size from 60px */
-    height: auto;
-    /* Optional: If the logo is too dark, uncomment the line below */
-    /* filter: brightness(1.2); */
 }
 
 .edu-text strong {

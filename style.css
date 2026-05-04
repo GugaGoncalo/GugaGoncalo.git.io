@@ -1,139 +1,76 @@
-/* 1. Global Reset & Theme */
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+/* Header & Profile Picture */
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 10px;
+}
 
-    body {
-        background-color: #0f0f0f; /* Deep black for maximum contrast */
-        color: #efefef;
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        line-height: 1.6;
-        overflow-x: hidden;
-    }
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* Makes it circular */
+    border: 2px solid #00ffcc;
+    object-fit: cover;
+}
 
-    /* 2. Navigation & Header */
-    header {
-        height: 60vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                    url('images/header-bg.jpg') center/cover; /* Optional background image */
-        border-bottom: 1px solid #333;
-    }
+/* About Section */
+.about-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    margin-top: 20px;
+}
 
-    h1 {
-        font-size: 3.5rem;
-        letter-spacing: -2px;
-        margin-bottom: 10px;
-        background: linear-gradient(to right, #00ffcc, #0099ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
+.education ul {
+    list-style: none;
+    padding-top: 10px;
+}
 
-    nav {
-        margin-top: 20px;
-    }
+.education li {
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
 
-    nav a {
-        color: #888;
-        text-decoration: none;
-        margin: 0 20px;
-        font-weight: 500;
-        transition: color 0.3s;
-        text-transform: uppercase;
-        font-size: 0.8rem;
-        letter-spacing: 2px;
-    }
+/* Game Screenshots */
+.game-screenshots {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+}
 
-    nav a:hover {
-        color: #00ffcc;
-    }
+.game-screenshots img {
+    width: calc(33.33% - 7px); /* Updated for 3 images */
+    border-radius: 4px;
+    border: 1px solid #333;
+}
 
-    /* 3. Section Layout */
-    section {
-        max-width: 1100px;
-        margin: 80px auto;
-        padding: 0 20px;
-    }
+/* Pinterest-like Photography Grid */
+.pinterest-grid {
+    column-count: 3; /* Number of columns */
+    column-gap: 15px;
+}
 
-    h2 {
-        font-size: 1.8rem;
-        margin-bottom: 30px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
+.photo-item {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 15px;
+}
 
-    h2::after {
-        content: "";
-        height: 1px;
-        background: #333;
-        flex-grow: 1;
-    }
+.photo-item img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+    transition: transform 0.3s ease;
+}
 
-    /* 4. The Portfolio Grid (Photography & 3D) */
-    .portfolio-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 25px;
-    }
+/* Responsive Grid Adjustments */
+@media (max-width: 900px) {
+    .pinterest-grid { column-count: 2; }
+    .about-grid { grid-template-columns: 1fr; }
+}
 
-    .card {
-        background: #1a1a1a;
-        border-radius: 15px;
-        overflow: hidden;
-        border: 1px solid #222;
-        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .card:hover {
-        transform: translateY(-10px);
-        border-color: #00ffcc;
-    }
-
-    .card img, .card iframe {
-        width: 100%;
-        display: block;
-        border: none;
-    }
-
-    .card-content {
-        padding: 20px;
-    }
-
-    /* 5. Buttons & Links */
-    .btn {
-        display: inline-block;
-        padding: 10px 20px;
-        background: transparent;
-        color: #00ffcc;
-        border: 1px solid #00ffcc;
-        border-radius: 5px;
-        text-decoration: none;
-        font-size: 0.9rem;
-        transition: all 0.3s;
-    }
-
-    .btn:hover {
-        background: #00ffcc;
-        color: #0f0f0f;
-    }
-
-    /* 6. Footer */
-    footer {
-        text-align: center;
-        padding: 50px;
-        color: #555;
-        font-size: 0.8rem;
-        border-top: 1px solid #222;
-    }
-
-    /* Mobile Tweaks */
-    @media (max-width: 600px) {
-        h1 { font-size: 2.5rem; }
-        nav a { margin: 0 10px; }
-    }
+@media (max-width: 600px) {
+    .pinterest-grid { column-count: 1; }
+    .header-content { flex-direction: column; text-align: center; }
+}

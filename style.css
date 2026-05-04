@@ -174,7 +174,7 @@ footer {
 }
 
 .edu-text strong {
-    color: #DCC48E; /* Uses your new accent color for the degree name */
+    color: #efefef; /* Uses your new accent color for the degree name */
     font-size: 1.1rem;
     display: block;
     margin-bottom: 5px;

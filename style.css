@@ -37,14 +37,16 @@ header {
     width: 150px; /* Forces a specific size */
     height: 150px;
     border-radius: 50%;
-    border: 3px solid #00ffcc;
+    border: 3px solid #DCC48E;
     object-fit: cover;
     flex-shrink: 0; /* Prevents squeezing */
 }
 
 h1 {
     font-size: 2.5rem;
-    color: #00ffcc;
+    background: linear-gradient(to right, #ffffff, #DCC48E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 nav a {
@@ -56,13 +58,17 @@ nav a {
     font-size: 0.9rem;
 }
 
-nav a:hover { color: #00ffcc; }
+nav a:hover { color: #DCC48E; }
 
 /* 3. Section Layouts */
 section {
     max-width: 1000px;
-    margin: 60px auto;
+    margin: 100px auto; /* Increased from 60px to 100px */
     padding: 0 20px;
+}
+
+.section-intro {
+    margin-bottom: 40px; /* Adds space between intro text and the first project card */
 }
 
 h2 {
@@ -137,4 +143,23 @@ footer {
     text-align: center;
     padding: 40px;
     color: #666;
+}
+
+.edu-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.edu-logo {
+    width: 40px; /* Adjust based on the logo shape */
+    height: auto;
+    border-radius: 4px;
+}
+
+.edu-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
 }

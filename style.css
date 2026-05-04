@@ -147,22 +147,35 @@ footer {
     color: #666;
 }
 
+.education {
+    background: #1a1a1a; /* Matches your project-card background */
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #222; /* Subtle border for definition */
+}
+
 .edu-item {
     display: flex;
-    flex-direction: column; /* Stacks logo over text */
-    align-items: flex-start; /* Keeps everything aligned to the left */
-    gap: 12px;
-    margin-top: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px; /* Space between logo and text */
 }
 
 .edu-logo {
-    width: 60px; /* Slightly bigger since it's on its own line */
+    width: 80px; /* Increased size from 60px */
     height: auto;
-    border-radius: 4px;
+    /* Optional: If the logo is too dark, uncomment the line below */
+    /* filter: brightness(1.2); */
 }
 
-.edu-text {
-    display: flex;
-    flex-direction: column;
-    gap: 4px; /* Space between degree name and university name */
+.edu-text strong {
+    color: #DCC48E; /* Uses your new accent color for the degree name */
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.edu-text span {
+    color: #888;
+    font-size: 0.9rem;
 }

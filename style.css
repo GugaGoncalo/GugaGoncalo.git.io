@@ -198,8 +198,8 @@ footer {
 
 .skill-item {
     background: #1a1a1a;
-    border: 1px solid #DCC48E;
-    color: #efefef;
+    border: 1px solid #333;
+    color: #DCC48E;
     padding: 8px 18px;
     border-radius: 4px; 
     font-size: 0.85rem;
@@ -209,9 +209,9 @@ footer {
 }
 
 .skill-item:hover {
-    background: #222;
+    background: #DCC48E;
     border-color: #333;
-    color: #DCC48E;
+    color: #333;
     cursor: default;
 }
 

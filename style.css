@@ -299,4 +299,5 @@ iframe {
 nav a.active {
     color: #DCC48E;
     border-bottom: 2px solid #DCC48E;
+    text-decoration: none;
 }

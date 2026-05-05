@@ -249,3 +249,39 @@ p a:hover{
     color: #DCC48E;
     text-decoration: none;
 }
+
+.work-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 60px; /* Large gap between different projects */
+}
+
+.work-item {
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #222;
+    transition: transform 0.3s ease;
+}
+
+/* Optional: Slight lift effect on hover */
+.work-item:hover {
+    transform: translateY(-5px);
+    border-color: #DCC48E;
+}
+
+.main-render, .main-video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.work-desc {
+    color: #888;
+    font-size: 0.95rem;
+    font-style: italic;
+    border-left: 2px solid #DCC48E;
+    padding-left: 15px;
+}

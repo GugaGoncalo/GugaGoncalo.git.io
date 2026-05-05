@@ -285,3 +285,7 @@ p a:hover{
     border-left: 2px solid #DCC48E;
     padding-left: 15px;
 }
+
+main {
+    min-height: 80vh; /* Takes up at least 80% of the screen height */
+}

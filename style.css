@@ -174,7 +174,7 @@ footer {
 }
 
 .edu-text strong {
-    color: #efefef; /* Uses your new accent color for the degree name */
+    color: #efefef;
     font-size: 1.1rem;
     display: block;
     margin-bottom: 5px;
@@ -264,7 +264,7 @@ p a:hover{
     transition: transform 0.3s ease;
 }
 
-/* Optional: Slight lift effect on hover */
+/* Slight lift effect on hover */
 .work-item:hover {
     transform: translateY(-5px);
     border-color: #DCC48E;
@@ -294,4 +294,9 @@ iframe {
     width: 100% !important;
     max-width: 552px;
     border-radius: 8px;
+}
+
+nav a.active {
+    color: #DCC48E;
+    border-bottom: 2px solid #DCC48E;
 }

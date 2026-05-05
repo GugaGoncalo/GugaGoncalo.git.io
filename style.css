@@ -289,3 +289,9 @@ p a:hover{
 main {
     min-height: 80vh; /* Takes up at least 80% of the screen height */
 }
+
+iframe {
+    width: 100% !important;
+    max-width: 552px;
+    border-radius: 8px;
+}

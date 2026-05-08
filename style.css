@@ -73,7 +73,7 @@ nav a.active {
 }
 
 nav a.active {
-    border-bottom: 2px solid #DCC48E; /* The "underline" fix */
+    border-bottom: 2px solid #DCC48E; 
 }
 
 /* 3. Section Typography & General Layout */

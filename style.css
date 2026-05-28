@@ -385,16 +385,12 @@ p a:hover {
    ========================================================================== */
 .game-screenshots {
     display: flex;
-    flex-wrap: wrap; /* CRITICAL SAFARI FIX: Allows items to break to a new row safely */
     gap: 15px;
     margin: 25px 0;
-    width: 100%;
 }
 
 .game-screenshots img {
-    flex: 1 1 300px; /* Flex-grow: 1, Flex-shrink: 1, Flex-basis: 300px */
     width: 100%;
-    min-width: 0;   /* Overrides automatic min-content scaling constraints in WebKit */
     height: auto;
     object-fit: cover;
     border-radius: 6px;
@@ -412,13 +408,10 @@ p a:hover {
 }
 
 iframe {
-    width: 100% !important;        /* Forces the 550px width to shrink down to card size */
-    max-width: 550px !important;   /* Keeps it from expanding past 550px on massive desktop screens */
-    height: 167px !important;      /* Tweaked slightly to prevent internal scrolling cutoffs */
+    width: 100% !important;
+    max-width: 552px;
     border-radius: 8px;
-    margin: 20px auto 0 auto;      /* Spaced out and perfectly centered */
-    display: block;
-    border: none !important;       /* Kills any rogue white iframe borders */
+    margin-top: 15px;
 }
 
 .main-render, .main-video {

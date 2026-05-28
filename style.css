@@ -431,23 +431,6 @@ iframe {
     padding-left: 15px;
 }
 
-/* Container that tames the iframe boundaries */
-.itch-widget-holder {
-    width: 100%;
-    max-width: 550px; /* Keeps it perfectly proportioned on Desktop PC */
-    margin: 20px auto 0 auto; /* Centers it smoothly inside your project card */
-    overflow: hidden; /* Hard clamps any inner asset layout overflows */
-    border-radius: 8px;
-}
-
-/* Forces the internal iframe code to fill the holder dynamically */
-.itch-widget-holder iframe {
-    display: block;
-    width: 100% !important;
-    height: 165px !important;
-    border: none !important;
-}
-
 /* ==========================================================================
    9. Photography Column Grid
    ========================================================================== */

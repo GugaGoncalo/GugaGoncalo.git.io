@@ -5,21 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gonçalo Oliveira | Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
 </head>
 <body>
 
-    <header>
-        <div class="header-content">
-            <img src="assets/profile.jpeg" alt="Gonçalo Oliveira Profile" class="profile-pic">
-            <h1>Gonçalo Oliveira</h1>
+    <nav class="sticky-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="assets/favicon.png" alt="Gonçalo Oliveira Logo" class="nav-favicon">
+            </a>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">About Me</a>
+                <a href="games.html" class="active">Games</a>
+                <a href="3d-work.html">3D Work</a>
+                <a href="photography.html">Photography</a>
+            </div>
         </div>
-        <nav>
-            <a href="index.html">About Me</a>
-            <a href="games.html" class="active">Games</a>
-            <a href="3d-work.html">3D Work</a>
-            <a href="photography.html">Photography</a>
-        </nav>
-    </header>
+    </nav>
+
 
     <main>
         <section id="games">
@@ -47,7 +57,7 @@
                         <img src="assets/games/game1ss2.jpg" alt="Gameplay screenshot">
                         <img src="assets/games/game1ss3.jpg" alt="Gameplay screenshot">
                     </div>
-                    <iframe frameborder="0" src="https://itch.io/embed/4523179?border_width=0&amp;bg_color=df3166&amp;fg_color=ffffff&amp;link_color=fae15b" width="550" height="165"><a href="https://guga-goncalo.itch.io/serra-serrada">Serra Serrada by guga_goncalo</a></iframe>
+                    <iframe frameborder="0" src="https://itch.io/embed/4523179?border_width=0&amp;bg_color=594734&amp;fg_color=efefef&amp;link_color=a07239&amp;border_color=594734" width="550" height="165"><a href="https://guga-goncalo.itch.io/serra-serrada">Serra Serrada by guga_goncalo</a></iframe>
                 </div>
             </div>
             <div class="project-container">
@@ -59,7 +69,7 @@
                         <img src="assets/games/game2ss2.jpg" alt="Gameplay screenshot">
                         <img src="assets/games/game2ss3.jpg" alt="Gameplay screenshot">
                     </div>
-                    <iframe frameborder="0" src="https://itch.io/embed/4526673?border_width=0&amp;bg_color=bfdfec&amp;fg_color=346190&amp;link_color=e8a700&amp;border_color=346190" width="550" height="165"><a href="https://guga-goncalo.itch.io/milky-quest">Milky Quest by guga_goncalo</a></iframe>
+                    <iframe frameborder="0" src="https://itch.io/embed/4526673?border_width=0&amp;bg_color=594734&amp;fg_color=efefef&amp;link_color=a07239&amp;border_color=594734" width="550" height="165"><a href="https://guga-goncalo.itch.io/milky-quest">Milky Quest by guga_goncalo</a></iframe>
                 </div>
             </div>
         </section>
@@ -70,8 +80,64 @@
             <a href="https://github.com/GugaGoncalo">GitHub</a>
             <a href="https://guga-goncalo.itch.io">itch.io</a>
         </div>
-    <p>&copy; 2026 Gonçalo Oliveira | Developed with HTML & CSS</p>
+    <p>&copy; 2026 Gonçalo Oliveira | Developed with HTML, CSS & JavaScript</p>
     </footer>
+
+    <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-img" id="lightbox-img" src="" alt="Enlarged view">
+    </div>
+
+    <script>
+    // Open Lightbox View
+    function openLightbox(src) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        lightbox.style.display = 'flex';
+        lightboxImg.src = src;
+        document.body.style.overflow = 'hidden'; // Lock background scroll
+    }
+
+    // Close Lightbox View
+    function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Unlock scroll
+    }
+
+    // Attach click events auto-detecting images in specific sections
+    document.addEventListener("DOMContentLoaded", () => {
+        const targets = document.querySelectorAll(".game-screenshots img, .photo-item img");
+        targets.forEach(img => {
+            img.addEventListener("click", () => openLightbox(img.src));
+        });
+    });
+
+    // Toggle Mobile Navigation Overlay Menu
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('open');
+        
+        // Prevent background body content scrolling while menu is active
+        if (navLinks.classList.contains('open')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Close menu automatically if a link is tapped
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        });
+    });
+    </script>
 
 </body>
 </html>

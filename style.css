@@ -1,4 +1,16 @@
-/* 1. Global Reset & Core Theme */
+﻿/* ==========================================================================
+   1. Fonts & Core Theme Configuration
+   ========================================================================== */
+@font-face {
+    font-family: 'League Spartan';
+    src: url('assets/fonts/league-spartan-bold.woff2') format('woff2'),
+         url('assets/fonts/league-spartan-bold.woff') format('woff'),
+         url('assets/fonts/league-spartan-bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,100 +18,280 @@
 }
 
 body {
-    background-color: #0f0f0f;
+    background-color: #16110c; /* Original deep dark brown */
     color: #efefef;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'League Spartan', 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem; /* General global font size upgrade */
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 main {
     min-height: 80vh; 
 }
 
-/* 2. Header & Navigation */
-header {
-    background: #1a1a1a;
-    padding: 40px 20px;
-    border-bottom: 1px solid #333;
+/* ==========================================================================
+   2. Fixed Navigation Bar
+   ========================================================================== */
+.sticky-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(22, 17, 12, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid #594734;
+    z-index: 1000;
+    padding: 20px 0;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+}
+
+.logo-link {
+    color: #efefef;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+}
+
+.nav-links a {
+    color: #efefef;
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1rem;
+    padding-bottom: 5px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-links a:hover, 
+.nav-links a.active { 
+    color: #a07239; 
+}
+
+.nav-links a.active {
+    border-bottom: 2px solid #a07239; 
+}
+
+.nav-favicon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.logo-link:hover .nav-favicon {
+    transform: scale(1.08);
+}
+
+/* Hamburger Trigger (Hidden on Desktop) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 18px;
+    padding: 0;
+    z-index: 2100; /* Stays above slide-out layer */
+}
+
+.hamburger-bar {
+    width: 100%;
+    height: 2px;
+    background-color: #efefef;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: left center;
+}
+
+/* ==========================================================================
+   3. Large Scale Animated Banner Header
+   ========================================================================== */
+header {
+    background: #16110c;
+    padding: 160px 20px 0px 20px;
+    border-bottom: 1px solid #594734;
+    display: flex;
+    justify-content: center;
 }
 
 .header-content {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    /* Clean Desktop Grid Layout Split */
+    grid-template-columns: 1fr 320px 1fr;
     align-items: center;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 25px;
     width: 100%;
-    max-width: 800px;
+    max-width: 1400px;
 }
 
-.profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 3px solid #DCC48E;
-    object-fit: cover;
-    flex-shrink: 0;
+.header-text-wrap {
+    display: contents; 
 }
 
-h1 {
-    font-size: 2.5rem;
-    background: linear-gradient(to right, #6F5655, #DCC48E);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: #DCC48E;
+.name-group, .title-group {
+    display: contents;
 }
 
-nav a {
-    color: #888;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
+header h1 {
+    font-size: 5.5rem;
+    font-weight: 800;
+    color: #efefef;
+    line-height: 0.85;
+    letter-spacing: -2px;
+}
+
+/* Maps desktop blocks to distinct grid cells */
+.animate-name-left { grid-column: 1; text-align: right; grid-row: 1; }
+.animate-name-right { grid-column: 3; text-align: left; grid-row: 1; }
+
+.sub-title {
+    font-size: 2rem; 
+    color: #a07239;
     text-transform: uppercase;
-    font-size: 0.9rem;
-    padding-bottom: 5px;
-    transition: color 0.3s ease, border-color 0.3s ease;
-    border-bottom: 2px solid transparent; /* Prevents layout jump when active */
+    letter-spacing: 1px;
+    margin-top: 0px;
+    display: inline-block;
 }
 
-nav a:hover, 
-nav a.active { 
-    color: #DCC48E; 
+.animate-sub-left { grid-column: 1; text-align: right; grid-row: 2; align-self: start; }
+.animate-sub-right { grid-column: 3; text-align: left; grid-row: 2; align-self: start; }
+
+/* Layered Portrait Composition */
+.profile-container {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    position: relative;
+    width: 300px; 
+    height: 300px; 
+    display: flex;
+    align-items: flex-end; 
+    justify-content: center;
+    margin-bottom: -1px;
 }
 
-nav a.active {
-    border-bottom: 2px solid #DCC48E; 
+.profile-circle-bg {
+    position: absolute;
+    bottom: 30px;
+    width: 250px; 
+    height: 250px; 
+    background: #a07239;
+    border-radius: 50%;
+    z-index: 1; 
 }
 
-/* 3. Section Typography & General Layout */
+.profile-pic-cutout {
+    position: relative;
+    width: 100%;
+    height: auto;
+    z-index: 2; 
+    display: block;
+    pointer-events: none; 
+}
+
+/* ==========================================================================
+   4. Staggered Core Animation Timings
+   ========================================================================== */
+.animate-name-left { animation: slideFromLeft 1.0s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-name-right { animation: slideFromRight 1.0s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+.animate-sub-left { 
+    animation: slideFromLeft 1.0s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.4s; 
+}
+.animate-sub-right { 
+    animation: slideFromRight 1.0s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.4s; 
+}
+
+.profile-circle-bg { 
+    animation: circleGrow 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) both; 
+    animation-delay: 0.2s; 
+    transform-origin: center; 
+}
+
+.profile-pic-cutout {
+    animation: portraitReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.5s; 
+}
+
+@keyframes slideFromLeft {
+    0% { transform: translateX(-50px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideFromRight {
+    0% { transform: translateX(50px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes circleGrow {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes portraitReveal {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* ==========================================================================
+   5. Layout Constraints & Standard Headings
+   ========================================================================== */
 section {
-    max-width: 1000px;
+    max-width: 1400px;
     margin: 100px auto;
-    padding: 0 20px;
+    padding: 0 40px;
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fadeInUp {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
 }
 
 h2 {
-    border-bottom: 1px solid #333;
+    font-size: 2.8rem; 
+    border-bottom: 1px solid #594734;
     padding-bottom: 10px;
     margin-bottom: 30px;
-    color: #DCC48E;
+    color: #a07239;
+    letter-spacing: -0.5px;
 }
 
 h3 {
-    color: #DCC48E;
+    font-size: 2rem; 
+    color: #a07239;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+
+p {
+    font-size: 1.25rem; 
+    font-weight: 400;   
 }
 
 .section-intro {
     margin-bottom: 40px;
+    max-width: 100%; /* Fully unconstrained to span across 1400px grids */
 }
 
 p a {
-    color: #DCC48E;
+    color: #a07239;
     text-decoration: none;
     font-weight: bold;
 }
@@ -108,19 +300,30 @@ p a:hover {
     text-decoration: underline;
 }
 
-/* 4. About & Skills (Index Page) */
+/* ==========================================================================
+   6. Modular Cards (About, Games, & 3D Showcase)
+   ========================================================================== */
 .about-content {
     display: flex;
     flex-direction: column;
     gap: 40px;
 }
 
-.education {
-    background: #1a1a1a;
-    padding: 25px;
+.education, .project-card, .work-item {
+    background: #2a2118; 
+    padding: 35px; 
     border-radius: 12px;
-    border: 1px solid #222;
-    max-width: 600px;
+    border: 1px solid #2a2118;
+    margin-bottom: 40px;
+}
+
+.work-item {
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.work-item:hover {
+    transform: translateY(-5px);
+    border-color: #a07239;
 }
 
 .edu-item {
@@ -131,60 +334,59 @@ p a:hover {
 }
 
 .edu-logo {
-    width: 120px;
+    width: 140px; 
     height: auto;
     margin-bottom: 5px;
 }
 
 .edu-text strong {
     color: #efefef;
-    font-size: 1.1rem;
+    font-size: 1.3rem; 
     display: block;
     margin-bottom: 5px;
 }
 
 .edu-text span {
-    color: #888;
-    font-size: 0.9rem;
+    color: #b3b3b3; 
+    font-size: 1.05rem; 
 }
 
+/* ==========================================================================
+   7. Technical Stack Layout Badges
+   ========================================================================== */
 .skills-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 20px;
+    gap: 14px;
+    margin-top: 25px;
 }
 
 .skill-item {
-    background: #1a1a1a;
-    border: 1px solid #333;
+    background: #2a2118;
+    border: 1px solid #2a2118;
     color: #efefef;
-    padding: 8px 18px;
-    border-radius: 4px; 
-    font-size: 0.85rem;
+    padding: 10px 22px; 
+    border-radius: 6px; 
+    font-size: 1rem; 
     font-weight: 600;
     letter-spacing: 0.5px;
     transition: all 0.2s ease-in-out;
 }
 
 .skill-item:hover {
-    background: #DCC48E;
-    border-color: #333;
-    color: #333;
+    background: #a07239;
+    border-color: #a07239;
+    color: #efefef;
+    transform: translateY(-2px);
 }
 
-/* 5. Games & Project Cards */
-.project-card {
-    background: #1a1a1a;
-    padding: 25px;
-    border-radius: 12px;
-    margin-bottom: 40px;
-}
-
+/* ==========================================================================
+   8. Media & Screenshot Component Properties
+   ========================================================================== */
 .game-screenshots {
     display: flex;
-    gap: 10px;
-    margin: 20px 0;
+    gap: 15px;
+    margin: 25px 0;
 }
 
 .game-screenshots img {
@@ -192,54 +394,48 @@ p a:hover {
     height: auto;
     object-fit: cover;
     border-radius: 6px;
-    border: 1px solid #333;
+    border: 3px solid #594734; 
+}
+
+.game-screenshots img, .photo-item img {
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.game-screenshots img:hover, .photo-item img:hover {
+    transform: scale(1.02);
+    filter: brightness(1.05);
 }
 
 iframe {
     width: 100% !important;
     max-width: 552px;
     border-radius: 8px;
-}
-
-/* 6. 3D Showcase */
-.work-showcase {
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
-}
-
-.work-item {
-    background: #1a1a1a;
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px solid #222;
-    transition: transform 0.3s ease;
-}
-
-.work-item:hover {
-    transform: translateY(-5px);
-    border-color: #DCC48E;
+    margin-top: 15px;
 }
 
 .main-render, .main-video {
     width: 100%;
     height: auto;
     border-radius: 8px;
+    border: 1px solid #594734;
     display: block;
     margin-bottom: 20px;
 }
 
 .work-desc {
-    color: #888;
-    font-size: 0.95rem;
+    color: #efefef;
+    font-size: 1.05rem; 
     font-style: italic;
-    border-left: 2px solid #DCC48E;
+    border-left: 2px solid #a07239;
     padding-left: 15px;
 }
 
-/* 7. Photography Grid */
+/* ==========================================================================
+   9. Photography Column Grid
+   ========================================================================== */
 .pinterest-grid {
-    column-count: 3;
+    column-count: 4;
     column-gap: 20px;
     width: 100%;
 }
@@ -257,11 +453,59 @@ iframe {
     display: block;
 }
 
-/* 8. Footer & Socials */
+/* ==========================================================================
+   10. Portfolio Lightbox Overlay
+   ========================================================================== */
+.lightbox-overlay {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(14, 11, 8, 0.96);
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-img {
+    max-width: 92%;
+    max-height: 88%;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.8);
+    animation: zoomIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: #efefef;
+    font-size: 44px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+    line-height: 1;
+}
+
+.lightbox-close:hover { color: #a07239; }
+
+@keyframes zoomIn { 
+    from { transform: scale(0.96); opacity: 0; } 
+    to { transform: scale(1); opacity: 1; } 
+}
+
+/* ==========================================================================
+   11. Footer Layout Sections
+   ========================================================================== */
 footer {
     text-align: center;
-    padding: 40px;
-    color: #666;
+    padding: 60px 40px;
+    color: #efefef;
+    border-top: 1px solid #2a2118;
+    margin-top: 40px;
 }
 
 .social-links {
@@ -272,22 +516,209 @@ footer {
     color: #efefef;
     text-decoration: none;
     margin: 0 15px;
-    font-size: 0.9rem;
+    font-size: 1.05rem; 
     transition: color 0.3s;
 }
 
 .social-links a:hover {
-    color: #DCC48E;
+    color: #a07239;
 }
 
-/* 9. Responsive Adjustments */
-@media (max-width: 850px) {
-    .pinterest-grid { column-count: 2; }
-    .header-content { flex-direction: column; text-align: center; }
+/* ==========================================================================
+   12. Responsive Adjustments (Mobile & Tablet Layouts)
+   ========================================================================== */
+@media (max-width: 1100px) {
+    header {
+        padding: 140px 20px 0px 20px;
+    }
+
+    .header-content {
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        text-align: center;
+        gap: 0px;
+    }
+
+    /* Sets up structural vertical stack alignments */
+    .header-text-wrap {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        gap: 12px; 
+        margin-bottom: 35px; 
+    }
+
+    /* LINE 1: Horizontal flex containment row */
+    .name-group {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 14px; 
+        width: 100%;
+    }
+
+    /* LINE 2: Horizontal flex containment row */
+    .title-group {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px; 
+        width: 100%;
+    }
+
+    header h1, .animate-name-left, .animate-name-right {
+        font-size: 3.2rem; 
+        line-height: 1;
+        letter-spacing: -1px;
+        text-align: center;
+    }
+
+    .sub-title, .animate-sub-left, .animate-sub-right {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 0px; 
+        text-align: center;
+    }
+
+    /* LINE 3: Portrait anchors flush against border-bottom */
+    .profile-container {
+        width: 280px;  
+        height: 280px;
+        margin-bottom: 0px;
+    }
+
+    .profile-circle-bg { 
+        width: 235px; 
+        height: 235px; 
+        bottom: 25px; 
+    }
+
+    /* 📱 HIGH-END INTERACTION OVERLAY PANEL */
+    .menu-toggle {
+        display: flex; 
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(22, 17, 12, 0.98); /* Brand brown matches background specs */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        z-index: 2000;
+        transform: translateX(100%); /* Slides out of sight by default */
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-links.open {
+        transform: translateX(0); /* Slide-in trigger action */
+    }
+
+    .nav-links a {
+        margin-left: 0; 
+        font-size: 1.8rem; /* Bold display style */
+        letter-spacing: 2px;
+        padding-bottom: 10px;
+    }
+
+    /* HAMBURGER BAR CLICKS ANIMATION SHAPES */
+    .menu-toggle.active .hamburger-bar:nth-child(1) {
+        transform: rotate(45deg) scaleX(1.1);
+        background-color: #a07239; 
+    }
+
+    .menu-toggle.active .hamburger-bar:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    .menu-toggle.active .hamburger-bar:nth-child(3) {
+        transform: rotate(-45deg) scaleX(1.1);
+        background-color: #a07239;
+    }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 650px) {
+    header h1, .animate-name-left, .animate-name-right { font-size: 2.3rem; } 
+    .name-group { gap: 10px; }
+    .sub-title, .animate-sub-left, .animate-sub-right { font-size: 1.1rem; }
+    .title-group { gap: 6px; }
+    p { font-size: 1.15rem; }
     .pinterest-grid { column-count: 1; }
     .game-screenshots { flex-direction: column; }
-    .game-screenshots img { width: 100%; height: auto; }
+    .nav-container { padding: 0 20px; }
+    section { padding: 0 20px; margin: 60px auto; }
+}
+
+/* ==========================================================================
+   13. Compact Sub-Page Header Styles (Instant Load for games, 3d, photo)
+   ========================================================================== */
+header.subpage-header {
+    padding: 140px 20px 30px 20px;
+    border-bottom: 1px solid #594734;
+}
+
+.header-content-subpage {
+    text-align: center;
+    width: 100%;
+}
+
+header.subpage-header h1 {
+    font-size: 3.8rem;
+    letter-spacing: -2px;
+    line-height: 1;
+    animation: none;
+}
+
+.sub-title-subpage {
+    font-size: 1.5rem;
+    color: #a07239;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+@media (max-width: 1100px) {
+    header.subpage-header {
+        padding: 120px 20px 20px 20px;
+    }
+    header.subpage-header h1 {
+        font-size: 2.8rem;
+    }
+}
+
+/* ==========================================================================
+   14. Mobile Sub-Page Spacing Fixes
+   ========================================================================== */
+@media (max-width: 1100px) {
+    /* Instead of forcing padding on the sub-header element, we push the parent 
+       container block natively down to clear the fixed 70px-80px navbar footprint */
+    header.subpage-header,
+    main > section:first-of-type,
+    body:not(.homepage) main { 
+        margin-top: 90px !important; /* Pushes the entire container down cleanly */
+    }
+    
+    /* Reset any zeroed-out mobile bounding constraints on the inner text elements */
+    header.subpage-header h1 {
+        padding-top: 10px !important;
+        line-height: 1.2 !important;
+    }
+}
+
+@media (max-width: 650px) {
+    header.subpage-header,
+    main > section:first-of-type,
+    body:not(.homepage) main { 
+        margin-top: 80px !important; /* Slightly tighter spacer tracking for mobile devices */
+    }
 }

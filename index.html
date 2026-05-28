@@ -5,20 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gonçalo Oliveira | Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
 </head>
 <body>
 
+    <nav class="sticky-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="assets/favicon.png" alt="Gonçalo Oliveira Logo" class="nav-favicon">
+            </a>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="active">About Me</a>
+                <a href="games.html">Games</a>
+                <a href="3d-work.html">3D Work</a>
+                <a href="photography.html">Photography</a>
+            </div>
+        </div>
+    </nav>
+
     <header>
         <div class="header-content">
-            <img src="assets/profile.jpeg" alt="Gonçalo Oliveira Profile" class="profile-pic">
-            <h1>Gonçalo Oliveira</h1>
+        
+            <div class="header-text-wrap">
+                <div class="name-group">
+                    <h1 class="animate-name-left">Gonçalo</h1>
+                    <h1 class="animate-name-right">Oliveira</h1>
+                </div>
+                <div class="title-group">
+                    <span class="sub-title animate-sub-left">Multimedia</span>
+                    <span class="sub-title animate-sub-right">Developer</span>
+                </div>
+            </div>
+        
+            <div class="profile-container">
+                <div class="profile-circle-bg"></div>
+                <img src="assets/pfptry.png" alt="Gonçalo Oliveira Profile" class="profile-pic-cutout">
+            </div>
+
         </div>
-        <nav>
-            <a href="index.html" class="active">About Me</a>
-            <a href="games.html">Games</a>
-            <a href="3d-work.html">3D Work</a>
-            <a href="photography.html">Photography</a>
-        </nav>
     </header>
 
     <main>
@@ -67,8 +98,64 @@
             <a href="https://github.com/GugaGoncalo">GitHub</a>
             <a href="https://guga-goncalo.itch.io">itch.io</a>
         </div>
-    <p>&copy; 2026 Gonçalo Oliveira | Developed with HTML & CSS</p>
+    <p>&copy; 2026 Gonçalo Oliveira | Developed with HTML, CSS & JavaScript</p>
     </footer>
+
+    <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-img" id="lightbox-img" src="" alt="Enlarged view">
+    </div>
+
+    <script>
+    // Open Lightbox View
+    function openLightbox(src) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        lightbox.style.display = 'flex';
+        lightboxImg.src = src;
+        document.body.style.overflow = 'hidden'; // Lock background scroll
+    }
+
+    // Close Lightbox View
+    function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Unlock scroll
+    }
+
+    // Attach click events auto-detecting images in specific sections
+    document.addEventListener("DOMContentLoaded", () => {
+        const targets = document.querySelectorAll(".game-screenshots img, .photo-item img");
+        targets.forEach(img => {
+            img.addEventListener("click", () => openLightbox(img.src));
+        });
+    });
+
+    // Toggle Mobile Navigation Overlay Menu
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('open');
+        
+        // Prevent background body content scrolling while menu is active
+        if (navLinks.classList.contains('open')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Close menu automatically if a link is tapped
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        });
+    });
+    </script>
 
 </body>
 </html>

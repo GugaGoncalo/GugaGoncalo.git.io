@@ -124,7 +124,7 @@ main {
    ========================================================================== */
 header {
     background: #16110c;
-    padding: 160px 20px 0px 20px;
+    padding: 100px 20px 0px 20px;
     border-bottom: 1px solid #594734;
     display: flex;
     justify-content: center;
@@ -265,7 +265,7 @@ section {
 }
 
 h2 {
-    font-size: 2.8rem; 
+    font-size: 2rem; /* Tuned down slightly from 2.8rem to look crisp */
     border-bottom: 1px solid #594734;
     padding-bottom: 10px;
     margin-bottom: 30px;
@@ -274,16 +274,17 @@ h2 {
 }
 
 h3 {
-    font-size: 2rem; 
+    font-size: 1.8rem; /* Tuned down slightly from 2.0rem for a clean hierarchy */
     color: #a07239;
     margin-bottom: 15px;
     letter-spacing: -0.5px;
 }
 
 p {
-    font-size: 1.25rem; 
+    font-size: 1.05rem;       /* Optimized from 1.25rem: The sweet spot for clean body copy */
     font-weight: 400;   
-}
+    line-height: 1.7;         /* Increased slightly from 1.6 to give text breathing room vertically */
+    color: #e0e0e0;           /* Softened the pure white text slightly to reduce night-mode eye strain */}
 
 .section-intro {
     margin-bottom: 40px;
@@ -341,14 +342,14 @@ p a:hover {
 
 .edu-text strong {
     color: #efefef;
-    font-size: 1.3rem; 
+    font-size: 1rem; 
     display: block;
     margin-bottom: 5px;
 }
 
 .edu-text span {
     color: #b3b3b3; 
-    font-size: 1.05rem; 
+    font-size: 0.9rem; 
 }
 
 /* ==========================================================================
@@ -367,7 +368,7 @@ p a:hover {
     color: #efefef;
     padding: 10px 22px; 
     border-radius: 6px; 
-    font-size: 1rem; 
+    font-size: 0.9rem; 
     font-weight: 600;
     letter-spacing: 0.5px;
     transition: all 0.2s ease-in-out;
